@@ -1,5 +1,7 @@
 # Backend
 backend/target/
+backend/weather-dashboard/target/
+backend/weather-dashboard/src/main/resources/application.properties
 backend/build/
 backend/.gradle/
 
@@ -25,3 +27,4 @@ frontend/build/
 # OS
 .DS_Store
 Thumbs.db
+
