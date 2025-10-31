@@ -1,0 +1,12 @@
+{
+  "build": {
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "backend/weather-dashboard/Dockerfile",
+    "dockerContext": "backend/weather-dashboard"
+  },
+  "deploy": {
+    "startCommand": "java -jar app.jar",
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
+  }
+}
