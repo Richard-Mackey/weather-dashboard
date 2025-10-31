@@ -1,0 +1,32 @@
+.card {
+  background-color: #b3b0a8;
+  padding: 30px;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-button {
+  margin: 5px;
+  background-color: white;
+  border: none;
+  color: black;
+}
+
+.search-button {
+  margin: 5px;
+  margin: 5px;
+  background-color: white;
+  border: none;
+  color: black;
+}
+
+h3 {
+  color: black;
+  font-weight: bold;
+}
+p {
+  color: black;
+  font-weight: bold;
+}
