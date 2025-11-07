@@ -58,8 +58,8 @@ function CitySelector() {
           </button>
         </form>
       </div>
-      <label className="dropdown-menu">
-        {"Check out past weather data from any of these locations: "}
+      <label className="dropdown-label">
+        {"Check out past weather data from these locations: "}
 
         <select
           className="dropdown-options"

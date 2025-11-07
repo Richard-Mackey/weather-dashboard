@@ -16,6 +16,7 @@ body {
 
     .time-label {
       font-size: 17px;
+      color: white;
     }
     .time-options {
       font-size: 15px;
@@ -24,6 +25,7 @@ body {
 
     .location-label {
       font-size: 17px;
+      color: white;
     }
     .location-options {
       font-size: 15px;
@@ -90,6 +92,7 @@ body {
     display: block;
     font-size: 14px;
     margin-bottom: 20px;
+    color: white;
   }
   .time-options {
     font-size: 16px;
@@ -99,6 +102,7 @@ body {
     display: block;
     font-size: 14px;
     margin-bottom: 20px;
+    color: white;
   }
   .location-options {
     font-size: 16px;
@@ -192,6 +196,7 @@ body {
     }
     .time-label {
       font-size: 17px;
+      color: white;
     }
     .time-options {
       font-size: 15px;
@@ -199,6 +204,7 @@ body {
 
     .location-label {
       font-size: 17px;
+      color: white;
     }
     .location-options {
       font-size: 15px;

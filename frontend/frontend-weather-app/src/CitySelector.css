@@ -1,5 +1,9 @@
-.dropdown-menu {
+h1 {
+  color: white;
+}
+.dropdown-label {
   font-size: 22px;
+  color: white;
 }
 .dropdown-options {
   font-size: 17px;
@@ -23,11 +27,17 @@
   color: white;
 }
 @media (max-width: 768px) {
-  .dropdown-menu {
+  .dropdown-label {
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
   }
   .dropdown-options {
     font-size: 16px;
+    width: 30vw;
+    margin: 0 auto;
   }
   .search-form {
     display: flex;

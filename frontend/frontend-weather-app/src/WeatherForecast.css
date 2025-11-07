@@ -96,6 +96,10 @@ body {
   .mobile-only-dropdown {
     display: inline-flex;
     margin-bottom: 20px;
+    color: white;
+  }
+  .mobile-only-dropdown-menu {
+    color: white;
   }
 
   .select-day-button {
