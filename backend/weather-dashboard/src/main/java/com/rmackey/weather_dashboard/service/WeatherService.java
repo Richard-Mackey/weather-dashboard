@@ -7,10 +7,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
+import com.rmackey.weather_dashboard.model.WeatherForecast;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,20 +21,21 @@ import java.util.stream.Collectors;
 public class WeatherService {
     // Injection of RestTemplate into class
     private RestTemplate restTemplate;
-@Value("${weather.api.key}")
+    @Value("${WEATHER_API_KEY}")
     private String apiKey;
 private WeatherReadingRepository weatherReadingRepository;
-public WeatherService(WeatherReadingRepository weatherReadingRepository){
-    this.weatherReadingRepository = weatherReadingRepository;
 
-}
+    public WeatherService(RestTemplate restTemplate, WeatherReadingRepository weatherReadingRepository) {
+        this.restTemplate = restTemplate;
+        this.weatherReadingRepository = weatherReadingRepository;
+    }
+
 public WeatherReading fetchAndSaveWeather(String name) throws JsonProcessingException{
 
   String units = "metric";
 
   String result = "https://api.openweathermap.org/data/2.5/weather?q=" + name + "&appid=" + apiKey + "&units=" + units;
-  // declare a RestTemplate variable, assign it to name restTemplate and assign a new instance in the constructor
-  RestTemplate restTemplate = new RestTemplate();
+
   // call API and get the response
   String JSON = restTemplate.getForObject(result, String.class);
   // captures the JSON output
@@ -69,5 +72,57 @@ public WeatherReading fetchAndSaveWeather(String name) throws JsonProcessingExce
                 .collect(Collectors.toList());
     }
     }
+
+  public List<WeatherForecast> fetchWeatherForecast(String name) throws JsonProcessingException {
+
+    String units = "metric";
+
+    String result =
+        "https://api.openweathermap.org/data/2.5/forecast?q="
+            + name
+            + "&appid="
+            + apiKey
+            + "&units="
+            + units;
+    String JSON = restTemplate.getForObject(result, String.class);
+    ObjectMapper objectMapper = new ObjectMapper();
+    JsonNode output = objectMapper.readTree(JSON);
+    String cityName = output.get("city").get("name").asText();
+    JsonNode forecastList = output.get("list");
+    List<WeatherForecast> forecasts = new ArrayList<>();
+
+    for (JsonNode item : forecastList) {
+      Double temp = item.get("main").get("temp").asDouble();
+      Double tempMin = item.get("main").get("temp_min").asDouble();
+      Double tempMax = item.get("main").get("temp_max").asDouble();
+      Double pressure = item.get("main").get("pressure").asDouble();
+      Double humidity = item.get("main").get("humidity").asDouble();
+        String description = item.get("weather").get(0).get("description").asText();
+        String icon = item.get("weather").get(0).get("icon").asText();
+      Integer visibility = item.get("visibility").asInt();
+      Double windSpeed = item.get("wind").get("speed").asDouble();
+
+      // Parse the date string
+      String dateString = item.get("dt_txt").asText();
+      LocalDateTime forecastTime =
+          LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+      WeatherForecast forecast =
+          new WeatherForecast(
+              temp,
+              tempMin,
+              tempMax,
+              pressure,
+              humidity,
+              cityName,
+              forecastTime,
+              description,
+              icon,
+              visibility,
+              windSpeed);
+        forecasts.add(forecast);
+
+    }
+    return forecasts;
+        }
    }
 

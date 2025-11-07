@@ -4,11 +4,3 @@
   padding: 2rem;
   text-align: center;
 }
-
-body {
-  background-image: url("/weather.png");
-  background-size: auto;
-  background-position: center;
-
-  z-index: -1;
-}

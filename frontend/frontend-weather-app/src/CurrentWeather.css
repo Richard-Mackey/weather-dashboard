@@ -1,32 +1,63 @@
 .card {
   background-color: #b3b0a8;
   padding: 30px;
+  width: 30vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: black;
+  h3 {
+    color: black;
+    font-weight: bold;
+  }
 }
 .button-container {
   display: flex;
   flex-direction: column;
 }
 
-.chart-button {
+.new-location-button {
   margin: 5px;
-  background-color: white;
+  background-color: #bd7e20;
   border: none;
-  color: black;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
 }
 
-.search-button {
+.forecast-button {
   margin: 5px;
-  margin: 5px;
-  background-color: white;
+  background-color: #bd7e20;
   border: none;
-  color: black;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
 }
 
-h3 {
-  color: black;
-  font-weight: bold;
+body {
+  background-color: #30283b;
 }
+
 p {
   color: black;
   font-weight: bold;
+}
+@media (max-width: 768px) {
+  .card {
+    background-color: #b3b0a8;
+    padding: 30px;
+    width: 60vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: black;
+    h3 {
+      color: black;
+      font-weight: bold;
+    }
+  }
 }

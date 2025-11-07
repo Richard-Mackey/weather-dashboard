@@ -6,8 +6,10 @@ A full-stack weather tracking application built with Spring Boot and React.
 
 - Real-time weather data from OpenWeatherMap API
 - Hourly automated data collection for multiple cities
-- Historical weather data visualization
+- Current weather and forecast displays
+- Historical weather data visualisation
 - Interactive charts for temperature, wind, pressure, and humidity
+- Fully responsive design
 
 ## Tech Stack
 

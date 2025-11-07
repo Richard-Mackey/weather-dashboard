@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from "react";
-import "./WeatherChart.css";
 import { useNavigate, useParams } from "react-router-dom";
+import "./WeatherChart.css";
 
-import { Line } from "react-chartjs-2";
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
+import { Line } from "react-chartjs-2";
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
   Title,
-  Tooltip,
-  Legend
+  Tooltip
 );
 
 function WeatherChart() {
+  const [selectedCity, setSelectedCity] = useState("");
   const [weatherData, setWeatherData] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -78,14 +77,18 @@ function WeatherChart() {
   };
 
   const tempOptions = {
+    plugins: {
+      title: {
+        display: true,
+        text: "Temperature",
+      },
+    },
     scales: {
       y: {
         title: {
           display: true,
-          text: "Temperature",
+          text: "Temperature (ºC)",
         },
-        beginAtZero: true,
-        max: 20,
       },
     },
   };
@@ -103,14 +106,19 @@ function WeatherChart() {
   };
 
   const windOptions = {
+    plugins: {
+      title: {
+        display: true,
+        text: "Wind speed",
+      },
+    },
     scales: {
       y: {
         title: {
           display: true,
-          text: "Wind speed",
+          text: "Wind speed (m/s)",
         },
-        beginAtZero: true,
-        max: 50,
+        min: 0,
       },
     },
   };
@@ -128,14 +136,20 @@ function WeatherChart() {
   };
 
   const pressureOptions = {
+    plugins: {
+      title: {
+        display: true,
+        text: "Pressure",
+      },
+    },
     scales: {
       y: {
         title: {
           display: true,
-          text: "Pressure",
+          text: "Pressure (mb)",
         },
-        min: 990,
-        max: 1020,
+        min: 980,
+        max: 1040,
       },
     },
   };
@@ -153,13 +167,18 @@ function WeatherChart() {
   };
 
   const humidityOptions = {
+    plugins: {
+      title: {
+        display: true,
+        text: "Humidity",
+      },
+    },
     scales: {
       y: {
         title: {
           display: true,
-          text: "Humidity",
+          text: "Humidity (%)",
         },
-        min: 50,
         max: 100,
       },
     },
@@ -177,10 +196,11 @@ function WeatherChart() {
     <div>
       <div className="title-dropdown-container">
         <h3>Weather data for {city}</h3>
-        <label>
-          {"Pick a timescale: "}
+        <label className="time-label">
+          {"Timescale: "}
 
           <select
+            className="time-options"
             name="selectedHours"
             value={selectedHours}
             onChange={(e) => setSelectedHours(e.target.value)}
@@ -191,8 +211,34 @@ function WeatherChart() {
             <option value="168">Last 7 days</option>
           </select>
         </label>
-        <button className="new-location-button" onClick={() => navigate(`/`)}>
-          Search another location
+
+        <label className="location-label">
+          {"Location: "}
+
+          <select
+            className="location-options"
+            name="selectedCity"
+            value={selectedCity}
+            onChange={(e) => {
+              setSelectedCity(e.target.value);
+              navigate(`/charts/${e.target.value}`);
+            }}
+          >
+            <option value="" disabled>
+              Select...
+            </option>
+            <option value="Littleborough">Littleborough</option>
+            <option value="Manchester">Manchester</option>
+            <option value="London">London</option>
+            <option value="Paris">Paris</option>
+            <option value="Dallas">Dallas</option>
+          </select>
+        </label>
+        <button
+          className="find-a-forecast-button"
+          onClick={() => navigate(`/`)}
+        >
+          Find a forecast
         </button>
       </div>
       <div className="temp-chart-container">

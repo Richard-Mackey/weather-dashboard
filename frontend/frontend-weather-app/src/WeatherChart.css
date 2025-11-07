@@ -1,64 +1,260 @@
-.title-dropdown-container {
-  position: fixed;
-  top: 0px;
-  right: 100px;
-  left: 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
+body {
+  background-color: #30283b;
 }
 
-.title-dropdown-container h3 {
-  color: white;
-}
+@media (min-width: 1025px) {
+  .title-dropdown-container {
+    position: fixed;
+    top: 0px;
+    right: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 
-.new-location-button {
-  background-color: white;
-  border: none;
-  color: black;
-  padding: 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  cursor: pointer;
-}
+    .time-label {
+      font-size: 17px;
+    }
+    .time-options {
+      font-size: 15px;
+      margin: 5px;
+    }
 
-.temp-chart-container {
-  width: 630px;
-  height: 300px;
-  background-color: white;
-  position: fixed;
-  top: 50px;
-  left: 40px;
-  border: 3px solid #73ad21;
+    .location-label {
+      font-size: 17px;
+    }
+    .location-options {
+      font-size: 15px;
+      margin: 5px;
+    }
+
+    .find-a-forecast-button {
+      margin-left: 20px;
+      background-color: #bd7e20;
+      border: none;
+      color: white;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  .temp-chart-container {
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    position: fixed;
+    top: 80px;
+    left: 40px;
+    border: 3px solid #73ad21;
+  }
+  .wind-chart-container {
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    position: fixed;
+    top: 80px;
+    right: 40px;
+    border: 3px solid #73ad21;
+  }
+  .pressure-chart-container {
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    position: fixed;
+    bottom: 5px;
+    left: 40px;
+    border: 3px solid #73ad21;
+    bottom: 10px;
+  }
+  .humidity-chart-container {
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    position: fixed;
+    bottom: 5px;
+    right: 40px;
+    border: 3px solid #73ad21;
+    bottom: 10px;
+  }
 }
-.wind-chart-container {
-  width: 630px;
-  height: 300px;
-  background-color: white;
-  position: fixed;
-  top: 50px;
-  right: 40px;
-  border: 3px solid #73ad21;
+@media (max-width: 1024px) {
+  .title-dropdown-container h3 {
+    color: white;
+    margin-bottom: 10px;
+  }
+  .time-label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .time-options {
+    font-size: 16px;
+  }
+
+  .location-label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .location-options {
+    font-size: 16px;
+  }
+  .find-a-forecast-button {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    background-color: #bd7e20;
+    border: none;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .new-location-button {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 8px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .temp-chart-container {
+    width: 70vw;
+    height: 20vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+  }
+  .wind-chart-container {
+    width: 70vw;
+    height: 20vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+  }
+  .pressure-chart-container {
+    width: 70vw;
+    height: 20vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+  }
+  .humidity-chart-container {
+    width: 70vw;
+    height: 20vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+  }
 }
-.pressure-chart-container {
-  width: 630px;
-  height: 300px;
-  background-color: white;
-  position: fixed;
-  bottom: 5px;
-  left: 40px;
-  border: 3px solid #73ad21;
-}
-.humidity-chart-container {
-  width: 630px;
-  height: 300px;
-  background-color: white;
-  position: fixed;
-  bottom: 5px;
-  right: 40px;
-  border: 3px solid #73ad21;
+@media (max-width: 1024px) and (orientation: landscape) {
+  .title-dropdown-container {
+    label,
+    h3,
+    select,
+    button {
+      margin: 0;
+    }
+    top: 10px;
+    right: 0px;
+    left: 50px;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    display: inline-flex;
+    flex-direction: row;
+    gap: 30px;
+    h3 {
+      font-size: 20px;
+    }
+    .time-label {
+      font-size: 17px;
+    }
+    .time-options {
+      font-size: 15px;
+    }
+
+    .location-label {
+      font-size: 17px;
+    }
+    .location-options {
+      font-size: 15px;
+    }
+
+    .find-a-forecast-button {
+      margin-left: 20px;
+      margin-right: 20px;
+      background-color: #bd7e20;
+      border: none;
+      color: white;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 15px;
+      padding-right: 15px;
+      width: 15vw;
+    }
+  }
+
+  .temp-chart-container {
+    position: fixed;
+    width: 40vw;
+    height: 35vh;
+    top: 20vh;
+    left: 40px;
+    background-color: white;
+    border: 3px solid #73ad21;
+  }
+
+  .wind-chart-container {
+    position: fixed;
+    width: 40vw;
+    height: 35vh;
+    top: 20vh;
+    right: 40px;
+    background-color: white;
+    border: 3px solid #73ad21;
+  }
+
+  .pressure-chart-container {
+    position: fixed;
+    width: 40vw;
+    height: 35vh;
+    top: 60vh;
+    left: 40px;
+    background-color: white;
+    border: 3px solid #73ad21;
+  }
+
+  .humidity-chart-container {
+    position: fixed;
+    width: 40vw;
+    height: 35vh;
+    top: 60vh;
+    right: 40px;
+    background-color: white;
+    border: 3px solid #73ad21;
+  }
 }

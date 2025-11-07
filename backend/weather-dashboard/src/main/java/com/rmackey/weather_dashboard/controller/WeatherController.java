@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.rmackey.weather_dashboard.model.WeatherReading;
 import com.rmackey.weather_dashboard.service.WeatherService;
 import org.springframework.web.bind.annotation.*;
-
+import com.rmackey.weather_dashboard.model.WeatherForecast;
 import java.util.List;
 
 // Base path for all weather-related endpoints in this controller
@@ -32,4 +32,11 @@ public class WeatherController {
         List<WeatherReading> weatherHistory = weatherService.getWeatherHistory(city, hours);
         return weatherHistory;
     }
+    @GetMapping("/forecast/{city}")
+    public List<WeatherForecast> fetchForecast(@PathVariable String city) throws JsonProcessingException {
+        // save the input and return the full URL for API get request
+        List<WeatherForecast> savedForecasts = weatherService.fetchWeatherForecast(city);
+        return savedForecasts;
+    }
+
 }
