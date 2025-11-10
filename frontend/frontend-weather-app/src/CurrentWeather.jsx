@@ -36,7 +36,14 @@ function CurrentWeather() {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="error-container">
+        <p className="error-message">{error}</p>
+        <button className="back-to-search-button" onClick={() => navigate("/")}>
+          Back to search
+        </button>
+      </div>
+    );
   }
 
   return (

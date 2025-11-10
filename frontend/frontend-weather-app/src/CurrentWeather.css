@@ -1,3 +1,32 @@
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.error-message {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.back-to-search-button {
+  background-color: #bd7e20;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.back-to-search-button:hover {
+  background-color: #a06a18;
+}
+
 .card {
   background-color: #b3b0a8;
   padding: 30px;
